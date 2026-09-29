@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+:root {
+  --cf-background: #0B0D14;
+  --cf-sidebar: #111522;
+  --cf-card: #151A29;
+  --cf-border: #252B3A;
+
+  --cf-primary: #7C5CFC;
+  --cf-secondary: #4F8CFF;
+
+  --cf-success: #22C55E;
+  --cf-warning: #F59E0B;
+  --cf-danger: #EF4444;
+
+  --cf-text: #F8FAFC;
+  --cf-muted: #94A3B8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cf-background);
+  color: var(--cf-text);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Global scrollbar */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cf-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cf-border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3A4255;
+}
+
+/* Main application background */
+
+.cf-app-background {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+  background-color: var(--cf-background);
+
+  background-image:
+    linear-gradient(
+      rgba(124, 92, 252, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(124, 92, 252, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 42px 42px;
+}
+
+/* Ambient background glow */
+
+.cf-app-background::before {
+  content: "";
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  top: -300px;
+  right: -200px;
+
+  background: radial-gradient(
+    circle,
+    rgba(124, 92, 252, 0.08),
+    transparent 70%
+  );
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Cursor glow */
+
+.cf-cursor-glow {
+  position: fixed;
+  width: 420px;
+  height: 420px;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle,
+    rgba(124, 92, 252, 0.075) 0%,
+    rgba(79, 140, 255, 0.035) 30%,
+    transparent 70%
+  );
+
+  filter: blur(10px);
+
+  z-index: -1;
+}
+
+/* Smooth interactions */
+
+button,
+a,
+input,
+select,
+textarea {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+/* Selection */
+
+::selection {
+  background: rgba(124, 92, 252, 0.35);
+  color: white;
+}
+
+/* Responsive utility */
+
+@media (max-width: 1024px) {
+  .cf-app-background {
+    background-size: 36px 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cf-app-background {
+    background-size: 30px 30px;
+  }
+
+  .cf-cursor-glow {
+    display: none;
+  }
+}
