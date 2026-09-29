@@ -293,12 +293,19 @@ function Opportunities() {
                 Close
               </button>
 
-              <button
-                onClick={() => handleApply(selectedOpportunity)}
-                  className="px-5 py-2.5 rounded-lg bg-[var(--cf-primary)] text-white text-sm font-medium hover:opacity-90 transition"
-              > 
-                Apply Now
-              </button>
+             <button
+  disabled={appliedOpportunities.includes(
+    `${selectedOpportunity.company}-${selectedOpportunity.role}`
+  )}
+  onClick={() => handleApply(selectedOpportunity)}
+  className="px-5 py-2.5 rounded-lg bg-[var(--cf-primary)] text-white text-sm font-medium hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
+>
+  {appliedOpportunities.includes(
+    `${selectedOpportunity.company}-${selectedOpportunity.role}`
+  )
+    ? 'Applied'
+    : 'Apply Now'}
+</button>
 
             </div>
 

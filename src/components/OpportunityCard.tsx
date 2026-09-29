@@ -8,7 +8,7 @@ type OpportunityCardProps = {
   skills: string[]
   posted: string
   type?: string
-  onView: () => void
+  onView?: () => void
 }
 
 function OpportunityCard({
@@ -96,7 +96,7 @@ function OpportunityCard({
 
         <button
           type="button"
-          onClick={onView}
+          onClick={() => onView?.()}
           className="px-4 py-2 rounded-lg bg-[var(--cf-primary)] text-white text-sm font-medium hover:opacity-90 transition"
         >
           View Opportunity
